@@ -1,0 +1,59 @@
+jakov@laptop:~/projects/gradlep3/scriptcheck$ ./gradlew jobDslTest
+
+> Configure project :
+6.2.2
+
+> Task :jobDslTest
+
+com.aoe.gradle.jenkinsjobdsl.JobScriptsSpec > test DSL script t1.groovy FAILED
+    org.spockframework.runtime.UnallowedExceptionThrownError at JobScriptsSpec.groovy:60
+        Caused by: javaposse.jobdsl.dsl.DslScriptException at JobScriptsSpec.groovy:56
+            Caused by: groovy.lang.MissingMethodException at JobScriptsSpec.groovy:56
+
+1 test completed, 1 failed
+
+> Task :jobDslTest FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':jobDslTest'.
+> There were failing tests. See the report at: file:///home/jakov/projects/gradlep3/scriptcheck/build/reports/tests/jobDslTest/index.html
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 7.0.
+Use '--warning-mode all' to show the individual deprecation warnings.
+See https://docs.gradle.org/6.2.2/userguide/command_line_interface.html#sec:command_line_warnings
+
+BUILD FAILED in 12s
+3 actionable tasks: 2 executed, 1 up-to-date
+jakov@laptop:~/projects/gradlep3/scriptcheck$ 
+
+
+// OVO JE TEST CASE
+test DSL script t1.groovy
+
+Expected no exception to be thrown, but got 'javaposse.jobdsl.dsl.DslScriptException'
+	at spock.lang.Specification.noExceptionThrown(Specification.java:119)
+	at com.aoe.gradle.jenkinsjobdsl.JobScriptsSpec.test DSL script #file.name(JobScriptsSpec.groovy:60)
+Caused by: javaposse.jobdsl.dsl.DslScriptException: (script, line 1) No signature of method: script.pipeline() is applicable for argument types: (script$_run_closure1) values: [script$_run_closure1@37423089]
+Possible solutions: pipelineJob(java.lang.String), pipelineJob(java.lang.String, groovy.lang.Closure)
+	at javaposse.jobdsl.dsl.AbstractDslScriptLoader.runScriptEngine(AbstractDslScriptLoader.groovy:114)
+	at javaposse.jobdsl.dsl.AbstractDslScriptLoader.runScripts_closure1(AbstractDslScriptLoader.groovy:61)
+	at groovy.lang.Closure.call(Closure.java:414)
+	at groovy.lang.Closure.call(Closure.java:430)
+	at javaposse.jobdsl.dsl.AbstractDslScriptLoader.runScripts(AbstractDslScriptLoader.groovy:46)
+	at javaposse.jobdsl.dsl.AbstractDslScriptLoader.runScript(AbstractDslScriptLoader.groovy:87)
+	at com.aoe.gradle.jenkinsjobdsl.JobScriptsSpec.test DSL script #file.name(JobScriptsSpec.groovy:56)
+Caused by: groovy.lang.MissingMethodException: No signature of method: script.pipeline() is applicable for argument types: (script$_run_closure1) values: [script$_run_closure1@37423089]
+Possible solutions: pipelineJob(java.lang.String), pipelineJob(java.lang.String, groovy.lang.Closure)
+	at script.run(script:1)
+	at javaposse.jobdsl.dsl.AbstractDslScriptLoader.runScript(AbstractDslScriptLoader.groovy:138)
+	at javaposse.jobdsl.dsl.AbstractDslScriptLoader.runScriptEngine(AbstractDslScriptLoader.groovy:108)
+	... 6 more
+
+
