@@ -37,6 +37,8 @@ dependencies {
 
     //jenkinsPlugin  'org.jenkins-ci.plugins:cloudbees-folder:6.11'
 
+
+    //jenkinsPlugin 'org.jenkins-ci.plugins:structs:1.20'
     jenkinsPlugin  'com.coravy.hudson.plugins.github:github:1.29.5'
     jenkinsPlugin  'com.openshift.jenkins.plugins:openshift-client:1.0.32'
     jenkinsPlugin  'com.openshift.jenkins:openshift-pipeline:1.0.56'
